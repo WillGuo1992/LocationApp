@@ -1,0 +1,90 @@
+.bgff {
+    background-color: #FFFFFF;
+}
+
+.search-panel {
+    padding: 20px;
+    margin: 10px 30px;
+    text-align: center;
+    background-color: #FFF;
+}
+
+.contentWarp {
+    margin: 0 30px;
+    padding: 0 10px;
+    background-color: #FFF;
+}
+
+.table-panel {
+    margin: 0 30px;
+    padding: 0 10px;
+    background-color: #FFF;
+}
+
+.form-group {
+    margin-left: 30px;
+}
+
+.form-group .checkbox-con {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.form-group input[type=checkbox] {
+    display: inline-block;
+    margin: 0 4px 0 0;
+    vertical-align: middle;
+}
+
+.btn.btn-after-icon,
+.btn.btn-before-icon {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.btn-before-icon:before {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    content: "";
+}
+
+.btn-after-icon:after {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    content: "";
+}
+
+.icon-search:after {
+    width: 16px;
+    height: 16px;
+    background: url(../images/search.png) center no-repeat;
+    background-size: 100%;
+}
+
+.icon-rest:after {
+    width: 16px;
+    height: 16px;
+    background: url(../images/refresh.png) center no-repeat;
+    background-size: 100%;
+}
+
+.icon-message:after {
+    width: 20px;
+    height: 13px;
+    background: url(../images/message.png) center no-repeat;
+    background-size: 100%;
+}
+
+.icon-add:after {
+    width: 16px;
+    height: 16px;
+    background: url(../images/addicon.png) center no-repeat;
+    background-size: 100%;
+}
+
+.form-inline .form-control.startTime,
+.form-inline .form-control.endTime {
+    width: 130px;
+}

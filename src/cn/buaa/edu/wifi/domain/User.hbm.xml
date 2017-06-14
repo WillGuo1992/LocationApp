@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="cn.buaa.edu.wifi.domain.User" table="user">
+		<id name="userId" type="string" column="userId">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="userName" type="string" column="userName"></property>
+		<property name="signInDate" type="date" column="signInDate"></property>
+		<property name="userRemark" type="string" column="userRemark"></property>	
+	</class>
+</hibernate-mapping>

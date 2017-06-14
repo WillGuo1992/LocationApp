@@ -1,0 +1,1056 @@
+/**
+ * @author zhixin wen <wenzhixin2010@gmail.com>
+ * version: 1.10.1
+ * https://github.com/wenzhixin/bootstrap-table/
+ */
+
+.bootstrap-table .table {
+	margin-bottom: 0 !important;
+	border-bottom: 1px solid #dddddd;
+	border-collapse: collapse !important;
+	border-radius: 1px;
+}
+
+.bootstrap-table .table:not(.table-condensed),
+.bootstrap-table .table:not(.table-condensed) > tbody > tr > th,
+.bootstrap-table .table:not(.table-condensed) > tfoot > tr > th,
+.bootstrap-table .table:not(.table-condensed) > thead > tr > td,
+.bootstrap-table .table:not(.table-condensed) > tbody > tr > td,
+.bootstrap-table .table:not(.table-condensed) > tfoot > tr > td {
+	padding: 8px;
+}
+
+.bootstrap-table .table.table-no-bordered > thead > tr > th,
+.bootstrap-table .table.table-no-bordered > tbody > tr > td {
+	border-right: 2px solid transparent;
+}
+
+.fixed-table-container {
+	position: relative;
+	clear: both;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.fixed-table-container.table-no-bordered {
+	border: 1px solid transparent;
+}
+
+.fixed-table-footer,
+.fixed-table-header {
+	overflow: hidden;
+}
+
+.fixed-table-footer {
+	border-top: 1px solid #dddddd;
+}
+
+.fixed-table-body {
+	overflow-x: auto;
+	overflow-y: auto;
+	height: 100%;
+}
+
+.fixed-table-container table {
+	width: 100%;
+}
+
+.fixed-table-container thead th {
+	height: 0;
+	padding: 0;
+	margin: 0;
+	border-left: 1px solid #dddddd;
+}
+
+.fixed-table-container thead th:focus {
+	outline: 0 solid transparent;
+}
+
+.fixed-table-container thead th:first-child {
+	border-left: none;
+	border-top-left-radius: 4px;
+	-webkit-border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+}
+
+.fixed-table-container thead th .th-inner,
+.fixed-table-container tbody td .th-inner {
+	padding: 8px;
+	line-height: 24px;
+	vertical-align: top;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fixed-table-container thead th .sortable {
+	cursor: pointer;
+	background-position: right;
+	background-repeat: no-repeat;
+	padding-right: 30px;
+}
+
+.fixed-table-container thead th .both {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyRDRGMzQ2MDYwMkFFNjExQTQzNEQ5REFBRUY5ODBEMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4OEU5MEIwQTJBNjUxMUU2QTc4RkQ5MkQ5RENCRUZBNCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4OEU5MEIwOTJBNjUxMUU2QTc4RkQ5MkQ5RENCRUZBNCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjJENEYzNDYwNjAyQUU2MTFBNDM0RDlEQUFFRjk4MEQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjJENEYzNDYwNjAyQUU2MTFBNDM0RDlEQUFFRjk4MEQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+pEcy7wAAAIJJREFUeNrEVNEKgDAInDJaFPXDPfWj/Yr5sIcg1mkT5otMRO9OJ4lIijJOgQaLHee1qBP1E8olA81nAvUgE/C2FVNa5Ikjml8oyIxMu29gKMWDzLJ8L3TZQwNZ/qFXs2FLsxloto+ZZu3OnrjlO4lnOOwUmXqvRql+jbgaY47jLcAAnms0maH0ySQAAAAASUVORK5CYII=');
+}
+
+.fixed-table-container thead th .asc {
+	background-image: url('data:image/png;base64,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');
+}
+
+.fixed-table-container thead th .desc {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTBFQjFCRDcyQTY1MTFFNjg5NEZCQjRGOENFRURFQTEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTBFQjFCRDgyQTY1MTFFNjg5NEZCQjRGOENFRURFQTEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxMEVCMUJENTJBNjUxMUU2ODk0RkJCNEY4Q0VFREVBMSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxMEVCMUJENjJBNjUxMUU2ODk0RkJCNEY4Q0VFREVBMSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu+dhUQAAABcSURBVHjaYvz//z8DtQATAxXBqGGjhtHDMBYc4sRkC0aiXFbdeI8DnylAeT6spuPJm/9JcRXeMAPazkSKOCGX4XIdI7mxyUisQUQlDaC32KE0N8HoHbSFI0CAAQCSsBpj+iTycQAAAABJRU5ErkJggg==');
+}
+
+.fixed-table-container th.detail {
+	width: 30px;
+}
+
+.fixed-table-container tbody td {
+	border-left: 1px solid #dddddd;
+}
+
+.fixed-table-container tbody tr:first-child td {
+	border-top: none;
+}
+
+.fixed-table-container tbody td:first-child {
+	border-left: none;
+}
+
+
+/* the same color with .active */
+
+.fixed-table-container tbody .selected td {
+	background-color: #f5f5f5;
+}
+
+.fixed-table-container .bs-checkbox {
+	text-align: center;
+}
+
+.fixed-table-container .bs-checkbox .th-inner {
+	padding: 8px 0;
+}
+
+.fixed-table-container input[type="radio"],
+.fixed-table-container input[type="checkbox"] {
+	margin: 0 auto !important;
+}
+
+.fixed-table-container .no-records-found {
+	text-align: center;
+}
+
+.fixed-table-pagination div.pagination,
+.fixed-table-pagination .pagination-detail {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.fixed-table-pagination div.pagination .pagination {
+	margin: 0;
+}
+
+.fixed-table-pagination .pagination a {
+	padding: 6px 12px;
+	line-height: 1.428571429;
+}
+
+.fixed-table-pagination .pagination-info {
+	line-height: 34px;
+	margin-right: 5px;
+}
+
+.fixed-table-pagination .btn-group {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.fixed-table-pagination .dropup .dropdown-menu {
+	margin-bottom: 0;
+}
+
+.fixed-table-pagination .page-list {
+	display: inline-block;
+}
+
+.fixed-table-toolbar .columns-left {
+	margin-right: 5px;
+}
+
+.fixed-table-toolbar .columns-right {
+	margin-left: 5px;
+}
+
+.fixed-table-toolbar .columns label {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	font-weight: normal;
+	line-height: 1.428571429;
+}
+
+.fixed-table-toolbar .bars,
+.fixed-table-toolbar .search,
+.fixed-table-toolbar .columns {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	line-height: 34px;
+}
+
+.fixed-table-pagination li.disabled a {
+	pointer-events: none;
+	cursor: default;
+}
+
+.fixed-table-loading {
+	display: none;
+	position: absolute;
+	top: 42px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99;
+	background-color: #fff;
+	text-align: center;
+}
+
+.fixed-table-body .card-view .title {
+	font-weight: bold;
+	display: inline-block;
+	min-width: 30%;
+	text-align: left !important;
+}
+
+
+/* support bootstrap 2 */
+
+.fixed-table-body thead th .th-inner {
+	box-sizing: border-box;
+}
+
+.table th,
+.table td {
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+.fixed-table-toolbar .dropdown-menu {
+	text-align: left;
+	max-height: 300px;
+	overflow: auto;
+}
+
+.fixed-table-toolbar .btn-group > .btn-group {
+	display: inline-block;
+	margin-left: -1px !important;
+}
+
+.fixed-table-toolbar .btn-group > .btn-group > .btn {
+	border-radius: 0;
+}
+
+.fixed-table-toolbar .btn-group > .btn-group:first-child > .btn {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.fixed-table-toolbar .btn-group > .btn-group:last-child > .btn {
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+
+.bootstrap-table .table > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 1px solid #ddd;
+}
+
+
+/* support bootstrap 3 */
+
+.bootstrap-table .table thead > tr > th {
+	padding: 0;
+	margin: 0;
+}
+
+.bootstrap-table .fixed-table-footer tbody > tr > td {
+	padding: 0 !important;
+}
+
+.bootstrap-table .fixed-table-footer .table {
+	border-bottom: none;
+	border-radius: 0;
+	padding: 0 !important;
+}
+
+.pull-right .dropdown-menu {
+	right: 0;
+	left: auto;
+}
+
+
+/* calculate scrollbar width */
+
+p.fixed-table-scroll-inner {
+	width: 100%;
+	height: 200px;
+}
+
+div.fixed-table-scroll-outer {
+	top: 0;
+	left: 0;
+	visibility: hidden;
+	width: 200px;
+	height: 150px;
+	overflow: hidden;
+}
+
+
+/*! X-editable - v1.5.1 
+* In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
+* http://github.com/vitalets/x-editable
+* Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
+
+.editableform {
+	margin-bottom: 0;
+	/* overwrites bootstrap margin */
+}
+
+.editableform .control-group {
+	margin-bottom: 0;
+	/* overwrites bootstrap margin */
+	white-space: nowrap;
+	/* prevent wrapping buttons on new line */
+	line-height: 20px;
+	/* overwriting bootstrap line-height. See #133 */
+}
+
+
+/* 
+  BS3 width:1005 for inputs breaks editable form in popup 
+  See: https://github.com/vitalets/x-editable/issues/393
+*/
+
+.editableform .form-control {
+	width: auto;
+}
+
+.editable-buttons {
+	display: inline-block;
+	/* should be inline to take effect of parent's white-space: nowrap */
+	vertical-align: top;
+	margin-left: 7px;
+	/* inline-block emulation for IE7*/
+	zoom: 1;
+	*display: inline;
+}
+
+.editable-buttons.editable-buttons-bottom {
+	display: block;
+	margin-top: 7px;
+	margin-left: 0;
+}
+
+.editable-input {
+	vertical-align: top;
+	display: inline-block;
+	/* should be inline to take effect of parent's white-space: nowrap */
+	width: auto;
+	/* bootstrap-responsive has width: 100% that breakes layout */
+	white-space: normal;
+	/* reset white-space decalred in parent*/
+	/* display-inline emulation for IE7*/
+	zoom: 1;
+	*display: inline;
+}
+
+.editable-buttons .editable-cancel {
+	margin-left: 7px;
+}
+
+
+/*for jquery-ui buttons need set height to look more pretty*/
+
+.editable-buttons button.ui-button-icon-only {
+	height: 24px;
+	width: 30px;
+}
+
+.editableform-loading {
+	background: url('../img/loading.gif') center center no-repeat;
+	height: 25px;
+	width: auto;
+	min-width: 25px;
+}
+
+.editable-inline .editableform-loading {
+	background-position: left 5px;
+}
+
+.editable-error-block {
+	max-width: 300px;
+	margin: 5px 0 0 0;
+	width: auto;
+	white-space: normal;
+}
+
+
+/*add padding for jquery ui*/
+
+.editable-error-block.ui-state-error {
+	padding: 3px;
+}
+
+.editable-error {
+	color: red;
+}
+
+
+/* ---- For specific types ---- */
+
+.editableform .editable-date {
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+
+/* move datepicker icon to center of add-on button. See https://github.com/vitalets/x-editable/issues/183 */
+
+.editable-inline .add-on .icon-th {
+	margin-top: 3px;
+	margin-left: 1px;
+}
+
+
+/* checklist vertical alignment */
+
+.editable-checklist label input[type="checkbox"],
+.editable-checklist label span {
+	vertical-align: middle;
+	margin: 0;
+}
+
+.editable-checklist label {
+	white-space: nowrap;
+}
+
+
+/* set exact width of textarea to fit buttons toolbar */
+
+.editable-wysihtml5 {
+	width: 566px;
+	height: 250px;
+}
+
+
+/* clear button shown as link in date inputs */
+
+.editable-clear {
+	clear: both;
+	font-size: 0.9em;
+	text-decoration: none;
+	text-align: right;
+}
+
+
+/* IOS-style clear button for text inputs */
+
+.editable-clear-x {
+	background: url('../img/clear.png') center center no-repeat;
+	display: block;
+	width: 13px;
+	height: 13px;
+	position: absolute;
+	opacity: 0.6;
+	z-index: 100;
+	top: 50%;
+	right: 6px;
+	margin-top: -6px;
+}
+
+.editable-clear-x:hover {
+	opacity: 1;
+}
+
+.editable-pre-wrapped {
+	white-space: pre-wrap;
+}
+
+.editable-container.editable-popup {
+	max-width: none !important;
+	/* without this rule poshytip/tooltip does not stretch */
+}
+
+.editable-container.popover {
+	width: auto;
+	/* without this rule popover does not stretch */
+}
+
+.editable-container.editable-inline {
+	display: inline-block;
+	vertical-align: middle;
+	width: auto;
+	/* inline-block emulation for IE7*/
+	zoom: 1;
+	*display: inline;
+}
+
+.editable-container.ui-widget {
+	font-size: inherit;
+	/* jqueryui widget font 1.1em too big, overwrite it */
+	z-index: 9990;
+	/* should be less than select2 dropdown z-index to close dropdown first when click */
+}
+
+.editable-click,
+a.editable-click,
+a.editable-click:hover {
+	text-decoration: none;
+	border-bottom: dashed 1px #0088cc;
+}
+
+.editable-click.editable-disabled,
+a.editable-click.editable-disabled,
+a.editable-click.editable-disabled:hover {
+	color: #585858;
+	cursor: default;
+	border-bottom: none;
+}
+
+.editable-empty,
+.editable-empty:hover,
+.editable-empty:focus {
+	font-style: italic;
+	color: #DD1144;
+	/* border-bottom: none; */
+	text-decoration: none;
+}
+
+.editable-unsaved {
+	font-weight: bold;
+}
+
+.editable-unsaved:after {
+	/*    content: '*'*/
+}
+
+.editable-bg-transition {
+	-webkit-transition: background-color 1400ms ease-out;
+	-moz-transition: background-color 1400ms ease-out;
+	-o-transition: background-color 1400ms ease-out;
+	-ms-transition: background-color 1400ms ease-out;
+	transition: background-color 1400ms ease-out;
+}
+
+
+/*see https://github.com/vitalets/x-editable/issues/139 */
+
+.form-horizontal .editable {
+	padding-top: 5px;
+	display: inline-block;
+}
+
+
+/*!
+ * Datepicker for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Improvements by Andrew Rowls
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+.datepicker {
+	padding: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	direction: ltr;
+	/*.dow {
+		border-top: 1px solid #ddd !important;
+	}*/
+}
+
+.datepicker-inline {
+	width: 220px;
+}
+
+.datepicker.datepicker-rtl {
+	direction: rtl;
+}
+
+.datepicker.datepicker-rtl table tr td span {
+	float: right;
+}
+
+.datepicker-dropdown {
+	top: 0;
+	left: 0;
+}
+
+.datepicker-dropdown:before {
+	content: '';
+	display: inline-block;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid #ccc;
+	border-bottom-color: rgba(0, 0, 0, 0.2);
+	position: absolute;
+	top: -7px;
+	left: 6px;
+}
+
+.datepicker-dropdown:after {
+	content: '';
+	display: inline-block;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #ffffff;
+	position: absolute;
+	top: -6px;
+	left: 7px;
+}
+
+.datepicker > div {
+	display: none;
+}
+
+.datepicker.days div.datepicker-days {
+	display: block;
+}
+
+.datepicker.months div.datepicker-months {
+	display: block;
+}
+
+.datepicker.years div.datepicker-years {
+	display: block;
+}
+
+.datepicker table {
+	margin: 0;
+}
+
+.datepicker td,
+.datepicker th {
+	text-align: center;
+	width: 20px;
+	height: 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: none;
+}
+
+.table-striped .datepicker table tr td,
+.table-striped .datepicker table tr th {
+	background-color: transparent;
+}
+
+.datepicker table tr td.day:hover {
+	background: #eeeeee;
+	cursor: pointer;
+}
+
+.datepicker table tr td.old,
+.datepicker table tr td.new {
+	color: #999999;
+}
+
+.datepicker table tr td.disabled,
+.datepicker table tr td.disabled:hover {
+	background: none;
+	color: #999999;
+	cursor: default;
+}
+
+.datepicker table tr td.today,
+.datepicker table tr td.today:hover,
+.datepicker table tr td.today.disabled,
+.datepicker table tr td.today.disabled:hover {
+	background-color: #fde19a;
+	background-image: -moz-linear-gradient(top, #fdd49a, #fdf59a);
+	background-image: -ms-linear-gradient(top, #fdd49a, #fdf59a);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd49a), to(#fdf59a));
+	background-image: -webkit-linear-gradient(top, #fdd49a, #fdf59a);
+	background-image: -o-linear-gradient(top, #fdd49a, #fdf59a);
+	background-image: linear-gradient(top, #fdd49a, #fdf59a);
+	background-repeat: repeat-x;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);
+	border-color: #fdf59a #fdf59a #fbed50;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+	color: #000;
+}
+
+.datepicker table tr td.today:hover,
+.datepicker table tr td.today:hover:hover,
+.datepicker table tr td.today.disabled:hover,
+.datepicker table tr td.today.disabled:hover:hover,
+.datepicker table tr td.today:active,
+.datepicker table tr td.today:hover:active,
+.datepicker table tr td.today.disabled:active,
+.datepicker table tr td.today.disabled:hover:active,
+.datepicker table tr td.today.active,
+.datepicker table tr td.today:hover.active,
+.datepicker table tr td.today.disabled.active,
+.datepicker table tr td.today.disabled:hover.active,
+.datepicker table tr td.today.disabled,
+.datepicker table tr td.today:hover.disabled,
+.datepicker table tr td.today.disabled.disabled,
+.datepicker table tr td.today.disabled:hover.disabled,
+.datepicker table tr td.today[disabled],
+.datepicker table tr td.today:hover[disabled],
+.datepicker table tr td.today.disabled[disabled],
+.datepicker table tr td.today.disabled:hover[disabled] {
+	background-color: #fdf59a;
+}
+
+.datepicker table tr td.today:active,
+.datepicker table tr td.today:hover:active,
+.datepicker table tr td.today.disabled:active,
+.datepicker table tr td.today.disabled:hover:active,
+.datepicker table tr td.today.active,
+.datepicker table tr td.today:hover.active,
+.datepicker table tr td.today.disabled.active,
+.datepicker table tr td.today.disabled:hover.active {
+	background-color: #fbf069 \9;
+}
+
+.datepicker table tr td.today:hover:hover {
+	color: #000;
+}
+
+.datepicker table tr td.today.active:hover {
+	color: #fff;
+}
+
+.datepicker table tr td.range,
+.datepicker table tr td.range:hover,
+.datepicker table tr td.range.disabled,
+.datepicker table tr td.range.disabled:hover {
+	background: #eeeeee;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.datepicker table tr td.range.today,
+.datepicker table tr td.range.today:hover,
+.datepicker table tr td.range.today.disabled,
+.datepicker table tr td.range.today.disabled:hover {
+	background-color: #f3d17a;
+	background-image: -moz-linear-gradient(top, #f3c17a, #f3e97a);
+	background-image: -ms-linear-gradient(top, #f3c17a, #f3e97a);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f3c17a), to(#f3e97a));
+	background-image: -webkit-linear-gradient(top, #f3c17a, #f3e97a);
+	background-image: -o-linear-gradient(top, #f3c17a, #f3e97a);
+	background-image: linear-gradient(top, #f3c17a, #f3e97a);
+	background-repeat: repeat-x;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f3c17a', endColorstr='#f3e97a', GradientType=0);
+	border-color: #f3e97a #f3e97a #edde34;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.datepicker table tr td.range.today:hover,
+.datepicker table tr td.range.today:hover:hover,
+.datepicker table tr td.range.today.disabled:hover,
+.datepicker table tr td.range.today.disabled:hover:hover,
+.datepicker table tr td.range.today:active,
+.datepicker table tr td.range.today:hover:active,
+.datepicker table tr td.range.today.disabled:active,
+.datepicker table tr td.range.today.disabled:hover:active,
+.datepicker table tr td.range.today.active,
+.datepicker table tr td.range.today:hover.active,
+.datepicker table tr td.range.today.disabled.active,
+.datepicker table tr td.range.today.disabled:hover.active,
+.datepicker table tr td.range.today.disabled,
+.datepicker table tr td.range.today:hover.disabled,
+.datepicker table tr td.range.today.disabled.disabled,
+.datepicker table tr td.range.today.disabled:hover.disabled,
+.datepicker table tr td.range.today[disabled],
+.datepicker table tr td.range.today:hover[disabled],
+.datepicker table tr td.range.today.disabled[disabled],
+.datepicker table tr td.range.today.disabled:hover[disabled] {
+	background-color: #f3e97a;
+}
+
+.datepicker table tr td.range.today:active,
+.datepicker table tr td.range.today:hover:active,
+.datepicker table tr td.range.today.disabled:active,
+.datepicker table tr td.range.today.disabled:hover:active,
+.datepicker table tr td.range.today.active,
+.datepicker table tr td.range.today:hover.active,
+.datepicker table tr td.range.today.disabled.active,
+.datepicker table tr td.range.today.disabled:hover.active {
+	background-color: #efe24b \9;
+}
+
+.datepicker table tr td.selected,
+.datepicker table tr td.selected:hover,
+.datepicker table tr td.selected.disabled,
+.datepicker table tr td.selected.disabled:hover {
+	background-color: #9e9e9e;
+	background-image: -moz-linear-gradient(top, #b3b3b3, #808080);
+	background-image: -ms-linear-gradient(top, #b3b3b3, #808080);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b3b3b3), to(#808080));
+	background-image: -webkit-linear-gradient(top, #b3b3b3, #808080);
+	background-image: -o-linear-gradient(top, #b3b3b3, #808080);
+	background-image: linear-gradient(top, #b3b3b3, #808080);
+	background-repeat: repeat-x;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#b3b3b3', endColorstr='#808080', GradientType=0);
+	border-color: #808080 #808080 #595959;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.datepicker table tr td.selected:hover,
+.datepicker table tr td.selected:hover:hover,
+.datepicker table tr td.selected.disabled:hover,
+.datepicker table tr td.selected.disabled:hover:hover,
+.datepicker table tr td.selected:active,
+.datepicker table tr td.selected:hover:active,
+.datepicker table tr td.selected.disabled:active,
+.datepicker table tr td.selected.disabled:hover:active,
+.datepicker table tr td.selected.active,
+.datepicker table tr td.selected:hover.active,
+.datepicker table tr td.selected.disabled.active,
+.datepicker table tr td.selected.disabled:hover.active,
+.datepicker table tr td.selected.disabled,
+.datepicker table tr td.selected:hover.disabled,
+.datepicker table tr td.selected.disabled.disabled,
+.datepicker table tr td.selected.disabled:hover.disabled,
+.datepicker table tr td.selected[disabled],
+.datepicker table tr td.selected:hover[disabled],
+.datepicker table tr td.selected.disabled[disabled],
+.datepicker table tr td.selected.disabled:hover[disabled] {
+	background-color: #808080;
+}
+
+.datepicker table tr td.selected:active,
+.datepicker table tr td.selected:hover:active,
+.datepicker table tr td.selected.disabled:active,
+.datepicker table tr td.selected.disabled:hover:active,
+.datepicker table tr td.selected.active,
+.datepicker table tr td.selected:hover.active,
+.datepicker table tr td.selected.disabled.active,
+.datepicker table tr td.selected.disabled:hover.active {
+	background-color: #666666 \9;
+}
+
+.datepicker table tr td.active,
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active.disabled,
+.datepicker table tr td.active.disabled:hover {
+	background-color: #006dcc;
+	background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	background-image: linear-gradient(top, #0088cc, #0044cc);
+	background-repeat: repeat-x;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+	border-color: #0044cc #0044cc #002a80;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.datepicker table tr td.active:hover,
+.datepicker table tr td.active:hover:hover,
+.datepicker table tr td.active.disabled:hover,
+.datepicker table tr td.active.disabled:hover:hover,
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active,
+.datepicker table tr td.active.disabled,
+.datepicker table tr td.active:hover.disabled,
+.datepicker table tr td.active.disabled.disabled,
+.datepicker table tr td.active.disabled:hover.disabled,
+.datepicker table tr td.active[disabled],
+.datepicker table tr td.active:hover[disabled],
+.datepicker table tr td.active.disabled[disabled],
+.datepicker table tr td.active.disabled:hover[disabled] {
+	background-color: #0044cc;
+}
+
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active {
+	background-color: #003399 \9;
+}
+
+.datepicker table tr td span {
+	display: block;
+	width: 23%;
+	height: 54px;
+	line-height: 54px;
+	float: left;
+	margin: 1%;
+	cursor: pointer;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.datepicker table tr td span:hover {
+	background: #eeeeee;
+}
+
+.datepicker table tr td span.disabled,
+.datepicker table tr td span.disabled:hover {
+	background: none;
+	color: #999999;
+	cursor: default;
+}
+
+.datepicker table tr td span.active,
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active.disabled,
+.datepicker table tr td span.active.disabled:hover {
+	background-color: #006dcc;
+	background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	background-image: linear-gradient(top, #0088cc, #0044cc);
+	background-repeat: repeat-x;
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+	border-color: #0044cc #0044cc #002a80;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
+	color: #fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.datepicker table tr td span.active:hover,
+.datepicker table tr td span.active:hover:hover,
+.datepicker table tr td span.active.disabled:hover,
+.datepicker table tr td span.active.disabled:hover:hover,
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled:hover.active,
+.datepicker table tr td span.active.disabled,
+.datepicker table tr td span.active:hover.disabled,
+.datepicker table tr td span.active.disabled.disabled,
+.datepicker table tr td span.active.disabled:hover.disabled,
+.datepicker table tr td span.active[disabled],
+.datepicker table tr td span.active:hover[disabled],
+.datepicker table tr td span.active.disabled[disabled],
+.datepicker table tr td span.active.disabled:hover[disabled] {
+	background-color: #0044cc;
+}
+
+.datepicker table tr td span.active:active,
+.datepicker table tr td span.active:hover:active,
+.datepicker table tr td span.active.disabled:active,
+.datepicker table tr td span.active.disabled:hover:active,
+.datepicker table tr td span.active.active,
+.datepicker table tr td span.active:hover.active,
+.datepicker table tr td span.active.disabled.active,
+.datepicker table tr td span.active.disabled:hover.active {
+	background-color: #003399 \9;
+}
+
+.datepicker table tr td span.old,
+.datepicker table tr td span.new {
+	color: #999999;
+}
+
+.datepicker th.datepicker-switch {
+	width: 145px;
+}
+
+.datepicker thead tr:first-child th,
+.datepicker tfoot tr th {
+	cursor: pointer;
+}
+
+.datepicker thead tr:first-child th:hover,
+.datepicker tfoot tr th:hover {
+	background: #eeeeee;
+}
+
+.datepicker .cw {
+	font-size: 10px;
+	width: 12px;
+	padding: 0 2px 0 5px;
+	vertical-align: middle;
+}
+
+.datepicker thead tr:first-child th.cw {
+	cursor: default;
+	background-color: transparent;
+}
+
+.input-append.date .add-on i,
+.input-prepend.date .add-on i {
+	display: block;
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+}
+
+.input-daterange input {
+	text-align: center;
+}
+
+.input-daterange input:first-child {
+	-webkit-border-radius: 3px 0 0 3px;
+	-moz-border-radius: 3px 0 0 3px;
+	border-radius: 3px 0 0 3px;
+}
+
+.input-daterange input:last-child {
+	-webkit-border-radius: 0 3px 3px 0;
+	-moz-border-radius: 0 3px 3px 0;
+	border-radius: 0 3px 3px 0;
+}
+
+.input-daterange .add-on {
+	display: inline-block;
+	width: auto;
+	min-width: 16px;
+	height: 18px;
+	padding: 4px 5px;
+	font-weight: normal;
+	line-height: 18px;
+	text-align: center;
+	text-shadow: 0 1px 0 #ffffff;
+	vertical-align: middle;
+	background-color: #eeeeee;
+	border: 1px solid #ccc;
+	margin-left: -5px;
+	margin-right: -5px;
+}

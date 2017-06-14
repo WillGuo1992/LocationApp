@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title>北航室内外定位及大数据分析系统</title>-->
+    <title> BUAA IPS System</title>
+    <link rel="stylesheet" href="resources/css/base.css">
+    <link rel="stylesheet" href="resources/libs/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link href="http://www.jq22.com/jquery/font-awesome.4.6.0.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="resources/css/sidebar-menu.css">
+    <link rel="stylesheet" href="resources/css/index.css">
+
+</head>
+<body>
+<div class="content-left">
+    <section  class="sidebar">
+        <ul class="sidebar-menu">
+            <!--<li class="header">室内外定位及大数据分析系统</li>-->
+            <!--<li class="header">北京航空航天大学</li>-->
+            <li class="header">BUAA IPS System</li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-th"></i> <span>首页</span>
+                    <small class="label pull-right label-info">main</small>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)" id="ips_index">
+                    <i class="fa fa-map-marker"></i> <span>室内定位</span> <i class="fa fa-angle-down pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)" data-url="view/indoorlocation/index.html" onclick="pageTo($(this).attr('data-url'))">
+                        <i class="fa fa-circle-o"></i> 整体概况</a>
+                    </li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 历史</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 实时</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 室内定位方法</a></li>
+                    <li><a href="javascript:void(0)" data-url="view/indoorlocation/triangleloc.html" onclick="pageTo($(this).attr('data-url'))">
+                        <i class="fa fa-circle-o"></i> 三角定位</a>
+                    </li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 指纹法</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> KNN</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> KNN+SVM</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-signal"></i>
+                    <span>手机信令</span>
+                    <span class="label label-primary pull-right">TO DO</span>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 整体概况</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 轨迹回放</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> POI</a></li>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>客流分析</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 整体客流</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 轨迹回放</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> POI</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 楼层客流</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 业态客流</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 顾客模型</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 特征日模型</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 客流热力图</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 手机数据</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-laptop"></i>
+                    <span>系统管理</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 用户管理</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 定时任务</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)">
+                    <i class="fa fa-edit"></i> <span>其他</span>
+                    <i class="fa fa-angle-right pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 测试1</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 测试2</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa fa-circle-o"></i> 测试3</a></li>
+                </ul>
+            </li>
+
+            <li class="bottom">北京航空航天大学<br>软件开发环境国家重点实验室</li>
+
+        </ul>
+    </section>
+</div>
+<div class="content-right">
+    <!--顶部轮播导航栏-->
+    <!--<div class="right-top">-->
+    <!--<div id="myCarousel" class="right-top carousel slide">-->
+    <!--&lt;!&ndash; 轮播（Carousel）指标 &ndash;&gt;-->
+    <!--<ol class="carousel-indicators">-->
+    <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+    <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
+    <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+    <!--</ol>-->
+    <!--&lt;!&ndash; 轮播（Carousel）项目 &ndash;&gt;-->
+    <!--<div class="carousel-inner">-->
+    <!--<div class="item active">-->
+    <!--<img src="" alt="First slide">-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<img src="/" alt="Second slide">-->
+    <!--</div>-->
+    <!--<div class="item">-->
+    <!--<img src="" alt="Third slide">-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; 轮播（Carousel）导航 &ndash;&gt;-->
+    <!--<a class="carousel-control left" href="#myCarousel"-->
+    <!--data-slide="prev">&lsaquo;</a>-->
+    <!--<a class="carousel-control right" href="#myCarousel"-->
+    <!--data-slide="next">&rsaquo;</a>-->
+    <!--</div>-->
+
+    <!---->
+
+
+    <!-- 页面加载容器-->
+    <div class="containter">
+        <div class="loading">
+            <span class="loading-item item-1"></span>
+            <span class="loading-item item-2"></span>
+            <span class="loading-item item-3"></span>
+            <span class="loading-item item-4"></span>
+            <span class="loading-item item-5"></span>
+            <span class="loading-item item-6"></span>
+            <span class="loading-item item-7"></span>
+        </div>
+        <iframe border="no" name="containter"></iframe>
+    </div>
+</div>
+<script src="resources/js/jquery-3.2.1.js"></script>
+<script src="resources/libs/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script src="resources/js/sidebar-menu.js"></script>
+<script src="resources/js/index.js"></script>
+<script>
+    $.sidebarMenu($('.sidebar-menu'));  //加载边栏点击事件
+
+    $("#ips_index").click();  //默认打开室内定位边栏
+</script>
+</body>
+</html>
