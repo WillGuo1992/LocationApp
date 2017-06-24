@@ -48,3 +48,44 @@
 1. 测试1
 2. 测试2
 3. 。。。
+
+
+
+# 系统说明
+
+## 环境配置说明
+
+1. jdk1.7
+
+   必须为1.7，测试时发现1.6或1.8都有问题，未解决，配置成1.7就可以了。
+
+2. apache-maven-3.5.0
+
+3. ZeroMQ 4.0.4（暂未使用）
+
+4. apache-activemq-5.14.5
+
+   ​	使用前需启动activemq.bat，windows下可配置为服务，启动服务即可；
+
+5. apache-tomcat-7.0.73-windows-x64
+
+## 部分协议说明
+
+1. AP to LocationEngine_GW：
+
+   ​	使用的是AeroScout协议，注意要G11实验室AC配置页面将协议配成AS协议
+
+2. ​
+
+
+# 其他说明
+
+1. iPhone iOS 8 设备探测阶段存在随机 MAC 地址 [见链接](https://www.zhihu.com/question/24094236?sort=created)
+2. ​
+3. ​
+
+
+# 不清楚的名词解释
+
+* JSM 
+* NIO

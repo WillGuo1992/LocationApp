@@ -2,7 +2,7 @@
  * Created by nlsde on 2017-06-11.
  */
 $(document).ready(function () {
-    var intervaltime = 1000;//定位时间间隔1000ms
+    var intervaltime = 5000;//定位时间间隔5000ms,5s
     var index = null;
     $("#start_loc").click(function () {
         if(index!=null){
