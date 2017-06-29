@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>标签定位</title>
+
+    <link rel="stylesheet" href="../../resources/css/base.css">
+    <link rel="stylesheet" href="../../resources/libs/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/libs/bootstrap-3.3.7-dist/bootstrap-table/bootstrap-table.css" />
+    <link rel="stylesheet" href="../../resources/css/common.css">
+    <link rel="stylesheet" href="../../resources/libs/bootstrap-3.3.7-dist/bootstrap-select/bootstrap-select.css">
+
+    <style type="text/css">
+        .location_pic{
+            /*position: absolute;*/
+            top:100px;
+
+        }
+        .location_pic img{
+            width: 100%;
+        }
+        #pin_pic{
+            width: 2%;
+            height: 2%;
+        }
+    </style>
+    <script src="../../resources/js/jquery-3.2.1.js"></script>
+    <script src="../../resources/modules/indoorlocation/tagloc.js"></script>
+</head>
+<body>
+
+<div class="search-panel">
+    <form class="form-inline tl">
+        <div class="form-group">
+            <label for="device_mac">定位设备：</label>
+            <input type="text" class="form-control" style="width: 400px" id="device_mac" name="device_mac" placeholder="选择定位设备">
+            <button type="button" class="btn btn-primary ">
+                <span class="glyphicon glyphicon-search"></span> 查询设备
+            </button>
+            <button type="button" class="btn btn-primary " id="start_loc">
+                <span class="glyphicon glyphicon-map-marker"></span> 实时定位
+            </button>
+            <button type="button" class="btn btn-primary " id="start_file_loc">
+                <span class="glyphicon glyphicon-folder-open"></span>  文件定位
+            </button>
+            <button type="button" class="btn btn-primary" id="stop_loc">
+                <span class="glyphicon glyphicon-stop" ></span> 结束定位
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="location_pic">
+    <img id="g11_pic" src="../../resources/images/g11.jpg">
+    <img id="pin_pic" src="../../resources/images/locationPin.png" hidden>
+</div>
+</body>
+</html>

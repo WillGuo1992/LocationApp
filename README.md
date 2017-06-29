@@ -46,9 +46,18 @@
 ## 其他
 
 1. 测试1
+
 2. 测试2
+
 3. 。。。
 
+   ​
+
+
+# 参考文档
+
+1. [某公司将室内定位的review](https://github.com/ibip/ibip_document/wiki/%E5%AE%A4%E5%86%85%E5%AE%9A%E4%BD%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BC%95%E6%93%8E%E6%9E%B6%E6%9E%84)
+2. ​
 
 
 # 系统说明
@@ -81,11 +90,22 @@
 # 其他说明
 
 1. iPhone iOS 8 设备探测阶段存在随机 MAC 地址 [见链接](https://www.zhihu.com/question/24094236?sort=created)
-2. ​
+2. activemq 37G —>3.9G 可以设定缓存大小等
 3. ​
 
 
-# 不清楚的名词解释
+# 不清楚的名词解释（TO DO）
 
 * JSM 
 * NIO
+* 卡尔曼滤波
+* 隐马尔科夫模型
+* 高斯滤波
+* 贝叶斯公式
+*  [Log4j 使用详解](http://blog.csdn.net/evankaka/article/details/45815047)
+* 高考志愿小强（问答机器人）
+
+
+
+
+

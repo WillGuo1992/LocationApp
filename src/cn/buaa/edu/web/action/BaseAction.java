@@ -1,10 +1,8 @@
 package cn.buaa.edu.web.action;
 
-import javax.management.j2ee.statistics.ServletStats;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts2.dispatcher.ng.servlet.ServletHostConfig;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 

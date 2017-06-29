@@ -16,5 +16,8 @@
 		<!-- 三角定位 -->
 		<action name="WifiIndoorTriangleAction_*" class="cn.buaa.edu.web.action.WifiIndoorTriangleAction" method="{1}">
 		</action>
+		<!-- 三角定位 -->
+		<action name="WifiIndoorTagAction_*" class="cn.buaa.edu.web.action.WifiIndoorTagAction" method="{1}">
+		</action>
 	</package>
 </struts>
