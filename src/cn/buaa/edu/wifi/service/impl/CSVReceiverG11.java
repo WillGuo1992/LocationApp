@@ -24,13 +24,15 @@ public class CSVReceiverG11 {
 	private static Logger logger = Logger.getLogger(WifiIndoorTagLocMethod.class);
 	
 	
-	public static String locStartTime = "2017.06.28 21:14:01";	//定位开始时间
-	public static int locInterval = 10000 ; //定位时间间隔 单位ms
+	//public static String locStartTime = "2017.06.29 00:00:01";	//定位开始时间
+	public static String locStartTime = "2017.06.29 15:00:01";	//定位开始时间
+	public static int locInterval = 100000 ; //定位时间间隔 单位ms
 	public static String dirOrigin = "F:\\G11_origin_data";
 	
 	public List getListFromCSVByMac(String Mac) throws Exception{
 		//得到定位时间
-		logger.info("定位时间："+locStartTime);
+		logger.info("定位时间："+locStartTime+"定位时间间隔"+locInterval);
+		WifiIndoorTagLocMethod.remark+="定位时间："+locStartTime+"定位时间间隔"+locInterval;
 		SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		Date locTime = null;
 		locTime = ft.parse(locStartTime);
@@ -99,6 +101,7 @@ public class CSVReceiverG11 {
 	    locTime.setTime(locTime.getTime() + locInterval);
 	    locStartTime = ft.format(locTime);
 	    logger.info("下次定位时间："+locStartTime);
+	    WifiIndoorTagLocMethod.remark+="下次定位时间："+locStartTime;
 		return list;
 	}
 	

@@ -13,11 +13,15 @@
 	
 	<!-- 室内定位 -->
 	<package name="wifi" namespace="/wifi" extends="struts-default">
+		<!-- Tag定位 -->
+		<action name="WifiIndoorTagAction_*" class="cn.buaa.edu.web.action.WifiIndoorTagAction" method="{1}">
+		</action>
 		<!-- 三角定位 -->
 		<action name="WifiIndoorTriangleAction_*" class="cn.buaa.edu.web.action.WifiIndoorTriangleAction" method="{1}">
 		</action>
-		<!-- 三角定位 -->
-		<action name="WifiIndoorTagAction_*" class="cn.buaa.edu.web.action.WifiIndoorTagAction" method="{1}">
+		<!-- 指纹定位KNN -->
+		<action name="WifiIndoorLocFingerKnnAction_*" class="cn.buaa.edu.web.action.WifiIndoorLocFingerKnnAction" method="{1}">
 		</action>
+		
 	</package>
 </struts>

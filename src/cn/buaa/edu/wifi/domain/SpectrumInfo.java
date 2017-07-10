@@ -1,5 +1,6 @@
 package cn.buaa.edu.wifi.domain;
 
+import java.util.List;
 import java.util.Map;
 /**
  * 指纹库信息
@@ -8,7 +9,7 @@ import java.util.Map;
  */
 public class SpectrumInfo {
 	private int locationID;   		//指纹点ID
-	private Map<String,Short> apRssi; //该点处对应Ap的rssi强度 集合
+	private List<Float> rssi; //该点处对应Ap的rssi强度 集合 按顺序
 	private float x;				//该点的x坐标 单位m
 	private float y;				//该点的y坐标 单位m
 	private float z;				//该点的z坐标 单位m
@@ -20,11 +21,11 @@ public class SpectrumInfo {
 	public void setLocationID(int locationID) {
 		this.locationID = locationID;
 	}
-	public Map<String, Short> getApRssi() {
-		return apRssi;
+	public List getRssi() {
+		return rssi;
 	}
-	public void setApRssi(Map<String, Short> apRssi) {
-		this.apRssi = apRssi;
+	public void setRssi(List rssi) {
+		this.rssi = rssi;
 	}
 	public float getX() {
 		return x;

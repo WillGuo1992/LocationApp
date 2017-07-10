@@ -28,7 +28,10 @@
     <script src="../../resources/modules/indoorlocation/triangleloc.js"></script>
 </head>
 <body>
-
+<ol class="breadcrumb">
+    <li><a href="#">室内定位</a></li>
+    <li class="active">三角定位</li>
+</ol>
 <div class="search-panel">
     <form class="form-inline tl">
         <div class="form-group">
@@ -38,7 +41,10 @@
                 <span class="glyphicon glyphicon-search"></span> 查询设备
             </button>
             <button type="button" class="btn btn-primary " id="start_loc">
-                <span class="glyphicon glyphicon-map-marker"></span> 开始定位
+                <span class="glyphicon glyphicon-map-marker"></span> 实时定位
+            </button>
+            <button type="button" class="btn btn-primary " id="start_file_loc">
+                <span class="glyphicon glyphicon-folder-open"></span>  文件定位
             </button>
             <button type="button" class="btn btn-primary" id="stop_loc">
                 <span class="glyphicon glyphicon-stop" ></span> 结束定位
@@ -49,7 +55,9 @@
 
 <div class="location_pic">
     <img id="g11_pic" src="../../resources/images/g11.jpg">
-    <img id="pin_pic" src="../../resources/images/locationPin.png" hidden>
+    <br/>
+    <div id="loc_msg" class="alert alert-info" align="center" >定位相关调试信息</div>
+    <img id="pin_pic" src="../../resources/images/locationPin.png" hidden >
 </div>
 </body>
 </html>

@@ -59,7 +59,9 @@ public class APTools {
 
 	// 加载APlist文件
 	public List getApList() {
-		List apList = new ArrayList<ApInfo>();
+		List apList = StartInitDataListener.apList;
+		if(apList.size()>0)
+			return apList;
 		// 获取到classes目录的全路径
 		String path = this.getClass().getResource("/")
 				.getPath();
@@ -79,7 +81,7 @@ public class APTools {
 				apInfo.setX(Float.valueOf(item[2]));
 				apInfo.setY(Float.valueOf(item[3]));
 				apList.add(apInfo);
-				logger.info(apInfo.toString());
+				//logger.info(apInfo.toString());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

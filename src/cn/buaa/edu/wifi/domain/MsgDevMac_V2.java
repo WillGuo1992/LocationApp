@@ -177,4 +177,6 @@ public class MsgDevMac_V2 extends MsgDevMac_V1 implements Serializable {
 		this.bssid = bssid;
 	}
 
+	
+
 }

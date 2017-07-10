@@ -17,7 +17,8 @@ $(document).ready(function () {
 
     //结束定位
     $("#stop_loc").click(function () {
-
+        var $loc_msg = $("#loc_msg");
+        $loc_msg.text("定位相关调试信息");
         if (index==null)
             return;
         var $pin_pic = $("#pin_pic");
@@ -50,25 +51,41 @@ function paintpoint(data) {
      *      2.相对坐标
      * @type {{mac: string, x: string, y: string, : string}}
      */
-    var postion = {"device_mac":"ab:cd:ef:gh:ab:cd", "x":"3.14", "y":"3.14", "xytype":"2", "positiontype":"1" };
+    var postion = data;   // eg. {apName: "G1149", locationId: 0, locationMethod: 1, x: 38, y: 16, z: 0}
+    // postion = {apName: "G1149", locationId: 0, locationMethod: 1, x: 38, y: 16, z: 0};
+    if (postion == null)
+        return;
+
+    var $loc_msg = $("#loc_msg");
+    $loc_msg.text(JSON.stringify(postion));
     console.log(postion);
+    if(postion.msgCode==2){
+        return
+    }
     var $g11_pic = $("#g11_pic");
     var $pin_pic = $("#pin_pic");
+    var $loc_msg = $("#loc_msg");
+    $loc_msg.text(JSON.stringify(postion));
     var height = $g11_pic.height();
     var witdth = $g11_pic.width();
+    var real_x = postion.x;
+    var real_y = postion.y;
+    var x_px = real_x*witdth/80;
+    var y_px = real_y*height/30;
     var radom_x = Math.random()*height;
     var radom_y = Math.random()*witdth;
     //console.log(height+","+witdth);
 
-    //var x = parseFloat(postion.x) + $g11_pic.position().top;
-    //var y = parseFloat(postion.y) + + $g11_pic.position().left;
+    var x = $g11_pic.position().left + parseFloat(x_px) ;
+    var y = $g11_pic.position().top+height - parseFloat(y_px) ;
+
     //test
-    var x = radom_x + $g11_pic.position().top;
-    var y = radom_y + + $g11_pic.position().left;
+    // var x = x_px + $g11_pic.position().top;
+    // var y = y_px + + $g11_pic.position().left;
     //alert($g11_pic.position().top);
     //alert(x+","+y+","+$g11_pic.position().top+","+$g11_pic.position().left);
 
     $pin_pic.show();
-    $pin_pic.offset({ "top": x, "left": y });
+    $pin_pic.offset({ "left": x, "top": y });
 
 }

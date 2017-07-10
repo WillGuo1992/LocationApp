@@ -18,9 +18,12 @@ public class TagLocTest {
 	
 	@Test
 	public void get_csv() throws Exception{
-		WifiIndoorTagLocMethod wifiIndoorTagLocMethod = new WifiIndoorTagLocMethod();
-		wifiIndoorTagLocMethod.getLocByTagMethodUsingFile(Mac);
-		
+		int sum =6*60*24;
+		for(int i=0;i<sum;i++){
+			System.out.println(i+"   "+sum);
+			WifiIndoorTagLocMethod wifiIndoorTagLocMethod = new WifiIndoorTagLocMethod();
+			wifiIndoorTagLocMethod.getLocByTagMethodUsingFile(Mac);
+		}
 	
 	}
 	

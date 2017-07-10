@@ -29,10 +29,11 @@ public class WifiIndoorTagLocMethod {
 	//tag定位
 	//文件定位
 	private static Logger logger = Logger.getLogger(WifiIndoorTagLocMethod.class);
-	
+	public static String remark="";//用于接收部分需要前端显示的调试信息，拼装
 	public LocationResult getLocByTagMethodUsingFile(String Mac) throws Exception{
 		Date start = new Date();
 		logger.info("开始File定位："+start);
+		remark="开始File定位："+start+"\n";
 		//从文件中获得当前MAC的报文，用于历史数据定位
 		CSVReceiverG11 csvReceiverG11 = new CSVReceiverG11();
 		List list = csvReceiverG11.getListFromCSVByMac(Mac);
@@ -41,36 +42,37 @@ public class WifiIndoorTagLocMethod {
 		
 		Date end = new Date();
 		logger.info("结束定位："+end+",用时(ms)："+String.valueOf(end.getTime()-start.getTime())+"\n\n\n\n");
-		
+		remark+="结束定位："+end+",用时(ms)："+String.valueOf(end.getTime()-start.getTime())+"\n\n\n\n";
+		locationResult.setRemark(remark);
 		return locationResult;
 	}
 	
 	//实时定位 注：需打开AMQ
 	public LocationResult getLocByTagMethodUsingActiveMQ(String Mac) throws Exception{
-		
 		Date start = new Date();
 		logger.info("开始AMQ定位："+start);
-		
+		remark="开始AMQ定位";
 		//从MQ中获得当前MAC的报文,用于实时定位
 		AMQReceiverG11 mq = new AMQReceiverG11();
 		List list = mq.getListFromAMQByMac(Mac);
 		
 		LocationResult locationResult = tagMethod(list);
 		
+		
 		Date end = new Date();
 		logger.info("结束定位："+end+",用时(ms)："+String.valueOf(end.getTime()-start.getTime())+"\n\n\n\n");
+		remark+="结束定位："+end+",用时(ms)："+String.valueOf(end.getTime()-start.getTime())+"";
+		locationResult.setRemark(remark);
 		return locationResult;
 	}
 		
 	public LocationResult tagMethod(List list){
-		//spring加载
-		List<ApInfo> apList = StartInitDataListener.apList;
+		
 		APTools apTools = new APTools();
-		//如果spring没有加载则手动加载,用于测试时使用
-		if(apList.size()==0){
-			apList = apTools.getApList();
-		}
+		List<ApInfo> apList = apTools.getApList();
+		
 		logger.info("当前device的报文数为:"+list.size());
+		remark+="当前device的报文数为:"+list.size();
 		for(Object obj : list){
 			MsgDevMac_V2 dev = (MsgDevMac_V2)obj;
 			ApInfo ap = apTools.findApByApMac(dev.getApMac(),apList);
@@ -79,7 +81,7 @@ public class WifiIndoorTagLocMethod {
 		//从list中选择出每个AP信号最强的
 		Map<String,Short> unique = new APTools().strongestAp(list);
 		logger.info("当前收到当前设备报文的AP数为："+unique.size());
-		
+		remark+="当前收到当前设备报文的AP数为："+unique.size();
 		//无合格定位报文返回null
 		if(unique.size()==0)
 			return null;
@@ -96,6 +98,7 @@ public class WifiIndoorTagLocMethod {
 			}
 		}
 		logger.info("最近AP信息:"+strongAP+","+strongRssi);
+		remark+="最近AP信息:"+strongAP+","+strongRssi;
 		//2.得到最强AP的位置
 		LocationResult locationResult = new LocationResult();
 		for(ApInfo apInfo : apList){
@@ -105,6 +108,7 @@ public class WifiIndoorTagLocMethod {
 				locationResult.setZ(apInfo.getZ());
 				locationResult.setApName(apInfo.getApName());
 				locationResult.setLocationMethod(1);
+				locationResult.setRemark(remark);
 				break;
 			}
 		}
